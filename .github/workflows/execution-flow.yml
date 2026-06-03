@@ -1,12 +1,15 @@
 name: Run the wokrflow
 
 on:
-  push:
+  pull_request:
     branches:
       - master
 
 jobs:
   build:
+    strategy:
+      matrix:
+        node-version: [18, 20]
     runs-on: ubuntu-latest
 
     steps:
@@ -19,7 +22,7 @@ jobs:
         uses: actions/setup-node@v5
 
         with:
-          node-version: 18
+          node-version: ${{matrix.node-version}}
 
       - name: install depedencies
 
@@ -29,6 +32,5 @@ jobs:
 
         run: npm run build
 
-      - name: print evemt name
-
-        run: echo ${{github.event_name}}
+      - name: Check Node version
+        run: node --version
