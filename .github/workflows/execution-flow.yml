@@ -3,7 +3,7 @@ name: Run the wokrflow
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
