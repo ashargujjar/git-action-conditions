@@ -7,7 +7,7 @@ jobs:
   create-artifact:
     runs-on: ubuntu-latest
     steps:
-      - name: Create report file
+      - name: Create report files
         run: echo "Build completed at $(date)" > report.txt
 
       - name: Upload artifact
